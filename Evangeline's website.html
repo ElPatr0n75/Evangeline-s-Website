@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Evangeline's Website</title>
+
+  <!-- Import IBM Plex Mono (if needed) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500&display=swap" rel="stylesheet">
+
+  <!-- Link to your external CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Main container and existing elements -->
+  <div class="main-container">
+    <!-- Navbar Container -->
+    <div class="navbar-container">
+      <!-- Left button: workwithme.svg (workwithme link) -->
+      <a href="Work with me.html" class="nav-link left-link">
+        <img src="assets/workwithme.svg" alt="Work With Me" class="nav-icon">
+      </a>
+
+      <!-- Hello Container (existing) -->
+      <div class="hello-container">
+        <p>Hello! I'm</p>
+      </div>
+
+      <!-- Center button: evangeline.svg (Evangeline's website) -->
+      <a href="Evangeline's website.html" class="nav-link center-link">
+        <img src="assets/evangeline.svg" alt="Evangeline" class="nav-icon">
+      </a>
+
+      <!-- MyPortfolio button: myportfolio.svg -->
+      <a href="My portfolio.html" class="nav-link myportfolio-link">
+        <img src="assets/myportfolio.svg" alt="My Portfolio" class="nav-icon">
+      </a>
+
+      <!-- Right button: instagram.svg (Instagram link) -->
+      <a href="https://www.instagram.com/evangeline.odibo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="nav-link right-link">
+        <img src="assets/instagram.svg" alt="Instagram" class="nav-icon">
+      </a>
+    </div>
+
+    <!-- Rest of your site’s existing content (selector-container, pre1-container, main-pic-container, etc.) -->
+    <div class="selector-container"></div>
+    <div class="pre1-container">
+      <p>
+        Age : 18&nbsp;&nbsp;&nbsp; Nationality : Switzerland&nbsp;&nbsp;&nbsp; 
+        Heritage : Slovenia / Nigeria&nbsp;&nbsp;&nbsp; Languages : German / English / French
+      </p>
+    </div>
+    <div class="main-pic-container">
+      <img src="assets/eva_louvre.jpg" alt="Eva Louvre" class="main-pic">
+    </div>
+    <div class="pre2-container">
+      <p>
+        Since a young age, I’ve always been independent and focused on my goals. 
+        This determination remains strong today, as I’ve started collaborating 
+        with different photographers and models.
+      </p>
+    </div>
+    <div class="footer-container">
+      <p>evangeline.odibo@gmail.com</p>
+    </div>
+  </div>
+
+  <!-- 3D Cards Container (existing) -->
+  <div class="cards-container">
+    <div class="card" id="card1"></div>
+    <div class="card" id="card2"></div>
+    <div class="card" id="card3"></div>
+    <div class="card" id="card4"></div>
+    <div class="card" id="card5"></div>
+  </div>
+
+  <!-- JavaScript for interactive 3D cards (existing) -->
+  <script>
+    // Movement & Rotation for 3D cards
+    const card1 = document.getElementById('card1');
+    const card2 = document.getElementById('card2');
+    const card3 = document.getElementById('card3');
+    const card4 = document.getElementById('card4');
+    const card5 = document.getElementById('card5');
+
+    const maxTranslation = 25;
+    const maxRotation = 5;
+
+    const cardConfigs = [
+      { el: card1, xMult: 1.0, yMult: 1.0, rxMult: 1.0, ryMult: 1.0 },
+      { el: card2, xMult: 0.8, yMult: 0.8, rxMult: 0.8, ryMult: 0.8 },
+      { el: card3, xMult: 1.2, yMult: 1.2, rxMult: 1.2, ryMult: 1.2 },
+      { el: card4, xMult: 1.0, yMult: 1.0, rxMult: 0.6, ryMult: 0.6 },
+      { el: card5, xMult: 1.3, yMult: 0.7, rxMult: 1.0, ryMult: 1.0 }
+    ];
+
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = (e.clientX / window.innerWidth) - 0.5; 
+      const mouseY = (e.clientY / window.innerHeight) - 0.5;
+
+      cardConfigs.forEach(({ el, xMult, yMult, rxMult, ryMult }) => {
+        const translateX = mouseX * 2 * maxTranslation * xMult;
+        const translateY = mouseY * 2 * maxTranslation * yMult;
+        const rotateX = -mouseY * 2 * maxRotation * rxMult;
+        const rotateY =  mouseX * 2 * maxRotation * ryMult;
+
+        el.style.transform = `
+          translate3d(${translateX}px, ${translateY}px, 0)
+          rotateX(${rotateX}deg)
+          rotateY(${rotateY}deg)
+        `;
+      });
+    });
+  </script>
+</body>
+</html>
